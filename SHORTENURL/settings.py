@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-v--393p2$i$s%hnnv20c$_^wjoktrmg@r#a_n4=cldvf9ig$o7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://localhost:3000/']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'urlshortner',
+    'urlshortner.cron',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.UserRateThrottle',  # Limit per user
+        'rest_framework.throttling.AnonRateThrottle',  # Limit for anonymous users
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '100/day',  # 100 requests per day per user
+        'anon': '100/hour',  # 10 requests per hour for anonymous users
+    },
+}

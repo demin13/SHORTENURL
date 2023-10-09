@@ -1,8 +1,17 @@
 from rest_framework import serializers
+from .models import URLStore
+
+
+class GetAllDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = URLStore
+        fields = '__all__'
+
+
 
 class CreateShortURISerializer(serializers.Serializer):
     originalURI = serializers.CharField()
-    expireDay = serializers.IntegerField()
+    expireDay = serializers.DateField()
 
     def validate(self, data):
 
