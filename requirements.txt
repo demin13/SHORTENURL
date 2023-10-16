@@ -1,4 +1,6 @@
-django==3.2
+django==4.2.6
 djangorestframework
 psycopg2
 apscheduler
+gunicorn
+django-cors-headers
