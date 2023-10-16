@@ -14,8 +14,7 @@ def my_cron_job():
     expired_urls.delete()
 
 def start():
-    print("started cron job")
-    scheduler.add_job(my_cron_job, 'interval', minutes=2)
+    scheduler.add_job(my_cron_job, 'cron', hour=0, minute=0)
     scheduler.start()
 
 

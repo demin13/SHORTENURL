@@ -10,8 +10,8 @@ class GetAllDataSerializer(serializers.ModelSerializer):
 
 
 class CreateShortURISerializer(serializers.Serializer):
-    originalURI = serializers.CharField()
-    expireDay = serializers.DateField()
+    originalUrl = serializers.CharField()
+    expiryDate = serializers.DateField()
 
     def validate(self, data):
 
@@ -27,7 +27,7 @@ class UpdateShortURISerializer(serializers.Serializer):
 
 class UpdateExpirySerializer(serializers.Serializer):
     shortURI = serializers.CharField()
-    expireDay = serializers.IntegerField()
+    expiryDate = serializers.IntegerField()
 
     def validate(self, data):
         return data
