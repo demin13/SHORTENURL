@@ -44,9 +44,7 @@
 
 
 ##### Web Framework (Frontend)
-    cd urlfrontend
-    npm install
-    npm start
+    # git clone https://github.com/demin13/urlfrontend.git
 
 
 #### To generate self signed SSL/TLS
